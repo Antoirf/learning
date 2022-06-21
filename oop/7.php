@@ -1,4 +1,5 @@
 <?php
+//https://code.mu/ru/php/book/oop/constructor/
 class Employee
 {
     public string $name;
