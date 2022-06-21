@@ -1,5 +1,18 @@
 <?php
+class Employee
+{
+    public string $name;
+    public int $age;
+    public int $salary;
 
-echo '1';
+    public function __construct($name, $age, $salary)
+    {
+        $this->name = $name;
+        $this->age = $age;
+        $this->salary = $salary;
+    }
+}
 
-echo '2';
+$employee1 = new Employee('eric', 25, 1000);
+$employee2 = new Employee('kyle', 30, 2000);
+echo $employee1->salary + $employee2->salary;
