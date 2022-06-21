@@ -49,6 +49,11 @@ class Employee
         return $this->salary;
     }
 
+    public function getSalaryWithCurency(): string
+    {
+        return $this->salary . ' $';
+    }
+
     /**
      * @param int $salary
      */
@@ -61,9 +66,9 @@ class Employee
     {
         if ($this->age >= 1 and $this->age <= 100) {
             return true;
-        } else {
-            return false;
         }
+        return false;
+
     }
 
 }
