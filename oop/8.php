@@ -1,6 +1,8 @@
 <?php
+
 //https://code.mu/ru/php/book/oop/getters-and-setters/
-class Employee{
+class Employee
+{
     private string $name;
     private int $age;
     private int $salary;
@@ -34,7 +36,9 @@ class Employee{
      */
     public function setAge(int $age): void
     {
-        $this->age = $age;
+        if ($this->isAgeCorrect()) {
+            $this->age = $age;
+        }
     }
 
     /**
@@ -51,6 +55,15 @@ class Employee{
     public function setSalary(int $salary): void
     {
         $this->salary = $salary;
+    }
+
+    private function isAgeCorrect()
+    {
+        if ($this->age >= 1 and $this->age <= 100) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
