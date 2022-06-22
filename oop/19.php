@@ -80,3 +80,60 @@ class Student extends User
         $this->course = $course;
     }
 }
+class Programmer extends Employee
+{
+    private array $langs;
+
+    /**
+     * @return array
+     */
+    public function getLangs(): array
+    {
+        return $this->langs;
+    }
+
+    /**
+     * @param array $langs
+     */
+    public function setLangs(array $langs): void
+    {
+        $this->langs = $langs;
+    }
+}
+class Driver extends Employee
+{
+    private int $driverExperience;
+    private array $licenseCategory;
+
+    /**
+     * @return int
+     */
+    public function getDriverExperience(): int
+    {
+        return $this->driverExperience;
+    }
+
+    /**
+     * @param int $driverExperience
+     */
+    public function setDriverExperience(int $driverExperience): void
+    {
+        $this->driverExperience = $driverExperience;
+    }
+
+    /**
+     * @return array
+     */
+    public function getLicenseCategory(): array
+    {
+        return $this->licenseCategory;
+    }
+
+    /**
+     * @param array $licenseCategory
+     */
+    public function setLicenseCategory(array $licenseCategory): void
+    {
+        $this->licenseCategory = $licenseCategory;
+    }
+}
