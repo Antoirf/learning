@@ -9,7 +9,7 @@ class Student
     public function __construct($name)
     {
         $this->name = $name;
-        $this->course = 1;
+        $this->course = 5;
     }
 
     /**
@@ -30,9 +30,13 @@ class Student
 
     public function transferToNextCourse()
     {
-        $this->course++;
+        if ($this->course < 5) {
+            return $this->course++;
+        }
+        return $this->course;
     }
 }
+
 $student = new Student('anton');
 $student->transferToNextCourse();
 var_dump($student);
