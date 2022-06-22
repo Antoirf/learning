@@ -20,7 +20,7 @@ $cityArray = [
     new City('moscow', 20000000),
     new City('city', 1)
 ];
-foreach ($cityArray as $city)
-{
+
+foreach ($cityArray as $city) {
     echo $city->name . ' ' . $city->population . PHP_EOL;
 }
