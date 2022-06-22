@@ -5,19 +5,19 @@ class ArrayAvgHelper
 {
     public function getAvg1($arr)
     {
-        return $this->getSum($arr, 1);
+        return $this->calcSqrt($this->getSum($arr, 1), 1);
+
 
     }
 
     public function getAvg2($arr)
     {
-        return $this->getSum($arr, 2);
+        return $this->calcSqrt($this->getSum($arr, 2), 2);
     }
 
     public function getAvg3($arr)
     {
-        return $this->getSum($arr, 3);
-
+        return $this->calcSqrt($this->getSum($arr, 3), 3);
     }
 
     private function getSum($arr, $power)
@@ -26,10 +26,16 @@ class ArrayAvgHelper
         foreach ($arr as $value) {
             $sum += pow($value, $power);
         }
-        return pow($sum, 1 / $power);
+        return $sum;
+    }
+
+    private function calcSqrt($num, $power)
+    {
+        return pow($num, 1 / $power);
+
     }
 }
 
 $arr = new ArrayAvgHelper();
 
-echo $arr->getAvg3([1, 2]);
+echo $arr->getAvg2([2, 2]);
