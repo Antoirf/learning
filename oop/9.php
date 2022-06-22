@@ -1,11 +1,18 @@
 <?php
 
 //https://code.mu/ru/php/book/oop/read-only-properties/
-class Employee
+class Employee3
 {
     private string $name;
     private string $surname;
     public int $salary;
+
+    public function __construct($name, $surname, $salary)
+    {
+        $this->name = $name;
+        $this->surname = $surname;
+        $this->salary = $salary;
+    }
 
     /**
      * @return string
@@ -39,10 +46,4 @@ class Employee
         $this->salary = $salary;
     }
 
-    public function __construct($name, $surname, $salary)
-    {
-        $this->name = $name;
-        $this->surname = $surname;
-        $this->salary = $salary;
-    }
 }
