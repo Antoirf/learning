@@ -59,3 +59,24 @@ class Employee extends User
         $this->salary = $salary;
     }
 }
+
+class Student extends User
+{
+    private int $course;
+
+    /**
+     * @return int
+     */
+    public function getCourse(): int
+    {
+        return $this->course;
+    }
+
+    /**
+     * @param int $course
+     */
+    public function setCourse(int $course): void
+    {
+        $this->course = $course;
+    }
+}
