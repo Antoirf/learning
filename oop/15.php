@@ -1,5 +1,5 @@
 <?php
-
+//https://code.mu/ru/php/book/oop/variable-methods-names/
 class Friend
 {
     private string $name;
