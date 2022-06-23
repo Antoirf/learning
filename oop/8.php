@@ -1,10 +1,10 @@
 <?php
 
 //https://code.mu/ru/php/book/oop/getters-and-setters/
-class Employee
+class Employee2
 {
     private string $name;
-    private int $age;
+    public int $age;
     private int $salary;
 
     /**
@@ -54,13 +54,6 @@ class Employee
         return $this->salary . ' $';
     }
 
-    /**
-     * @param int $salary
-     */
-    public function setSalary(int $salary): void
-    {
-        $this->salary = $salary;
-    }
 
     private function isAgeCorrect()
     {
