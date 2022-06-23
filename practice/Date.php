@@ -16,52 +16,64 @@ class Date
 
     public function getDay()
     {
-        return date('d', $this->timestamp);
+        return $this->format('d');
     }
 
     public function getMonth($lang = null)
     {
-        $monthArr = ['January' => 'Январь',
-            'February' => 'Февраль',
-            'March' => 'Март',
-            'April' => 'Апрель',
-            'May' => 'Май',
-            'June' => 'Июнь',
-            'July' => 'Июль',
-            'August' => 'Август',
-            'September' => 'Сентябрь',
-            'October' => 'Октябрь',
-            'November' => 'Ноябрь',
-            'December' => 'Декабрь'];
-        $month = date('F', $this->timestamp);
-        var_dump($month);
-        if ($lang === 'en' or $lang === null) {
-            return $month;
+        if ($lang === 'en') {
+            return $this->getMonthOnEng();
         }
-        return $monthArr[$month];
+        if ($lang === 'ru') {
+            return $this->getMonthOnRus();
+        }
+        return $this->getNumMonth();
+    }
+
+    private function getMonthOnEng()
+    {
+        return $this->format('F');
+    }
+
+    private function getNumMonth()
+    {
+        return $this->format('n');
+    }
+
+    private function getMonthOnRus()
+    {
+        $monthArr = [
+            'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль',
+            'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'
+        ];
+        return $monthArr[$this->getNumMonth() - 1];
     }
 
     public function getYear()
     {
-        return date('Y', $this->timestamp);
+        return $this->format('Y');
     }
 
     public function getWeekDay($lang = null)
     {
-        $ruWeekDayArr = [
-            'Monday' => 'Понедельник',
-            'Tuesday' => 'Вторник',
-            'Wednesday' => 'Среда',
-            'Thursday' => 'Четверг',
-            'Friday' => 'Пятница',
-            'Saturday' => 'Суббота',
-            'Sunday' => 'Воскресенье'
-        ];
-        $weekDay = date('l', $this->timestamp);
-        if ($lang === 'en' or $lang === null) {
-            return $weekDay;
+        if ($lang === 'en') {
+            return date('l', $this->timestamp);
         }
-        return $ruWeekDayArr[$weekDay];
+        if ($lang = 'ru') {
+            return $this->getWeekDayOnRus();
+        }
+        return $this->getNumbWeekDay();
+    }
+
+    private function getNumbWeekDay()
+    {
+        return $this->format('N');
+    }
+
+    private function getWeekDayOnRus()
+    {
+        $ruWeekDayArr = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
+        return $ruWeekDayArr[$this->getNumbWeekDay() - 1];
     }
 
     public function addDay($days)
@@ -72,7 +84,6 @@ class Date
     public function subDay($days)
     {
         $this->timestamp -= $days * 60 * 60 * 24;
-
     }
 
     public function addMonth($num)
@@ -97,10 +108,10 @@ class Date
 
     public function __toString()
     {
-        return date('Y-m-d', $this->timestamp);
+        return $this->format();
     }
 
-    public function format($format)
+    public function format($format = 'Y-m-d')
     {
         return date($format, $this->timestamp);
     }
@@ -108,5 +119,4 @@ class Date
 
 
 $date = new Date();
-$date->subYear(2);
-echo $date;
+echo $date->getWeekDay('en');
