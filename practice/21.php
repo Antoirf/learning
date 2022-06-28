@@ -32,12 +32,13 @@ class User
 class Employee extends User
 {
     private string $timestamp;
+    private $age;
 
     public function __construct($name, $surname, $birthday)
     {
-        $this->name = $name;
-        $this->surname = $surname;
+        parent::__construct($name, $surname);
         $this->timestamp = strtotime($birthday);
+        $this->age = $this->calculateAge($birthday);
     }
 
     /**
@@ -50,7 +51,22 @@ class Employee extends User
 
     private function calculateAge($birthday)
     {
-    return date('y',strtotime($birthday) - strtotime(date('Y-m-d')));
+        if (date('m', strtotime(date('Y-m-d'))) > date('m', strtotime($birthday))) {
+            return date('Y', strtotime(date('Y-m-d'))) - date('Y', strtotime($birthday));
+        }else {
+            return date('Y', strtotime(date('Y-m-d'))) - date('Y', strtotime($birthday)) - 1;
+        }
+    }
+
+    /**
+     * @return int|string
+     */
+    public function getAge(): int
+    {
+        return $this->age;
     }
 
 }
+
+$employee = new Employee('kolya', 'ivanov', '1992-07-10');
+echo $employee->getAge();
