@@ -59,7 +59,7 @@ class Date
         if ($lang === 'en') {
             return date('l', $this->timestamp);
         }
-        if ($lang = 'ru') {
+        if ($lang === 'ru') {
             return $this->getWeekDayOnRus();
         }
         return $this->getNumbWeekDay();
