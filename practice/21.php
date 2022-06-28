@@ -32,9 +32,10 @@ class User
 class Employee extends User
 {
     private string $timestamp;
-    private $age;
+    private int $age;
+    private int $salary;
 
-    public function __construct($name, $surname, $birthday)
+    public function __construct($name, $surname, $birthday, $salary)
     {
         parent::__construct($name, $surname);
         $this->timestamp = strtotime($birthday);
@@ -53,7 +54,7 @@ class Employee extends User
     {
         if (date('m', strtotime(date('Y-m-d'))) > date('m', strtotime($birthday))) {
             return date('Y', strtotime(date('Y-m-d'))) - date('Y', strtotime($birthday));
-        }else {
+        } else {
             return date('Y', strtotime(date('Y-m-d'))) - date('Y', strtotime($birthday)) - 1;
         }
     }
@@ -66,7 +67,15 @@ class Employee extends User
         return $this->age;
     }
 
+    /**
+     * @return int
+     */
+    public function getSalary(): int
+    {
+        return $this->salary;
+    }
+
 }
 
-$employee = new Employee('kolya', 'ivanov', '1992-07-10');
+$employee = new Employee('kolya', 'ivanov', '1992-07-10', 1000);
 echo $employee->getAge();
