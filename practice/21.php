@@ -41,11 +41,16 @@ class Employee extends User
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getBirthday(): int
+    public function getBirthday(): string
     {
-        return $this->timestamp;
+        return date('Y-m-d', $this->timestamp);
+    }
+
+    private function calculateAge($birthday)
+    {
+    return date('y',strtotime($birthday) - strtotime(date('Y-m-d')));
     }
 
 }
