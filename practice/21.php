@@ -2,13 +2,13 @@
 
 class User
 {
-    protected string $name;
-    protected int $age;
+    private string $name;
+    private string $surname;
 
-    public function __construct($name, $age)
+    public function __construct($name, $surname)
     {
         $this->name = $name;
-        $this->age = $age;
+        $this->surname = $surname;
     }
 
     /**
@@ -22,9 +22,9 @@ class User
     /**
      * @return int
      */
-    public function getAge(): int
+    public function getSurname(): string
     {
-        return $this->age;
+        return $this->surname;
     }
 
 }
@@ -33,10 +33,10 @@ class Student extends User
 {
     private int $course;
 
-    public function __construct($name, $age, $course)
+    public function __construct($name, $surname, $course)
     {
         $this->name = $name;
-        $this->age = $age;
+        $this->surname = $surname;
         $this->course = $course;
     }
 
@@ -47,5 +47,5 @@ class Student extends User
     {
         return $this->course;
     }
-    
+
 }
