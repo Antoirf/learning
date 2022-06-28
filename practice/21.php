@@ -2,8 +2,8 @@
 
 class User
 {
-    private string $name;
-    private string $surname;
+    protected string $name;
+    protected string $surname;
 
     public function __construct($name, $surname)
     {
@@ -29,23 +29,23 @@ class User
 
 }
 
-class Student extends User
+class Employee extends User
 {
-    private int $course;
+    private string $timestamp;
 
-    public function __construct($name, $surname, $course)
+    public function __construct($name, $surname, $birthday)
     {
         $this->name = $name;
         $this->surname = $surname;
-        $this->course = $course;
+        $this->timestamp = strtotime($birthday);
     }
 
     /**
      * @return int
      */
-    public function getCourse(): int
+    public function getBirthday(): int
     {
-        return $this->course;
+        return $this->timestamp;
     }
 
 }
