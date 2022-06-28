@@ -7,3 +7,5 @@ class Product
     private int $price;
 
 }
+
+$product1 = new Product();
