@@ -22,12 +22,12 @@ class SumHelper
 {
     public function getSum2($arr)
     {
-        $this->getSum($arr, 2);
+        return $this->getSum($arr, 2);
     }
 
     public function getSum3($arr)
     {
-        $this->getSum($arr, 3);
+        return $this->getSum($arr, 3);
     }
 
     public function getSum($arr, $power)
@@ -51,9 +51,14 @@ class AvgHelper
 
     public function getAvg($arr)
     {
-        return $this->sum->getSum($arr, 1);
+        return $this->sum->getSum($arr, 1) / count($arr);
+    }
+
+    public function getMeanSquare($arr)
+    {
+        return sqrt($this->sum->getSum2($arr) / count($arr));
     }
 }
 
 $avg = new AvgHelper();
-echo $avg->getAvg([1, 2, 3]);
+echo $avg->getMeanSquare([1, 2, 3]);
