@@ -5,15 +5,22 @@ class Arr
 {
     private array $nums = [];
     private $sumHelper;
+    private $avgHelper;
 
     public function __construct()
     {
         $this->sumHelper = new SumHelper();
+        $this->avgHelper = new AvgHelper();
     }
 
     public function Add($number)
     {
         $this->nums[] = $number;
+    }
+
+    public function getAvgMeanSum()
+    {
+        return $this->avgHelper->getAvg($this->nums) + $this->avgHelper->getMeanSquare($this->nums);
     }
 }
 
@@ -60,5 +67,8 @@ class AvgHelper
     }
 }
 
-$avg = new AvgHelper();
-echo $avg->getMeanSquare([1, 2, 3]);
+$avg = new Arr();
+$avg->add(1);
+$avg->add(2);
+print_r($avg);
+echo $avg->getAvgMeanSum();
