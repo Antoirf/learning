@@ -30,7 +30,7 @@ class SumHelper
         $this->getSum($arr, 3);
     }
 
-    private function getSum($arr, $power)
+    public function getSum($arr, $power)
     {
         $sum = 0;
         foreach ($arr as $value) {
@@ -39,3 +39,21 @@ class SumHelper
         return $sum;
     }
 }
+
+class AvgHelper
+{
+    private $sum;
+
+    public function __construct()
+    {
+        $this->sum = new SumHelper();
+    }
+
+    public function getAvg($arr)
+    {
+        return $this->sum->getSum($arr, 1);
+    }
+}
+
+$avg = new AvgHelper();
+echo $avg->getAvg([1, 2, 3]);
